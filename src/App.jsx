@@ -50,7 +50,7 @@ function App() {
 
       <footer className="border-t border-white/10 py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/60">© {new Date().getFullYear()} Flames Portfolio. All rights reserved.</p>
+          <p className="text-white/60">© {new Date().getFullYear()} Fatals Portfolio. All rights reserved.</p>
           <div className="text-white/60 text-sm">Built with love, motion, and a touch of purple.</div>
         </div>
       </footer>

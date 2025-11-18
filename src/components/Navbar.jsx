@@ -25,7 +25,7 @@ export default function Navbar() {
         <div className="h-16 flex items-center justify-between">
           <a href="#home" className="group inline-flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-purple-400 to-purple-600 ring-2 ring-purple-400/40 shadow-[0_0_30px_rgba(168,85,247,0.35)] flex items-center justify-center text-black font-black">F</div>
-            <span className="text-white/80 group-hover:text-white transition">Flames Portfolio</span>
+            <span className="text-white/80 group-hover:text-white transition">Fatals Portfolio</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
