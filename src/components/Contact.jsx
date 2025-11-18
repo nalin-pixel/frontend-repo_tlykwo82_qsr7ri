@@ -16,7 +16,7 @@ export default function Contact() {
     <section id="contact" className="relative py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-white">Contact</h2>
-        <p className="text-teal-100/70 mt-2 mb-8">Let’s start something great together.</p>
+        <p className="text-purple-100/70 mt-2 mb-8">Let’s start something great together.</p>
 
         <motion.form onSubmit={onSubmit} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="grid md:grid-cols-2 gap-6">
           <input required placeholder="Your name" className="input-teal" />
@@ -26,7 +26,7 @@ export default function Contact() {
             <button className="btn-teal">
               <Send size={18} /> Send message
             </button>
-            <span className="text-teal-100/80 text-sm">{status}</span>
+            <span className="text-purple-100/80 text-sm">{status}</span>
           </div>
         </motion.form>
       </div>
