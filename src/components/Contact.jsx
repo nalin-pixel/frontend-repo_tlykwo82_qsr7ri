@@ -19,11 +19,11 @@ export default function Contact() {
         <p className="text-teal-100/70 mt-2 mb-8">Let’s start something great together.</p>
 
         <motion.form onSubmit={onSubmit} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="grid md:grid-cols-2 gap-6">
-          <input required placeholder="Your name" className="px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-teal-400/50" />
-          <input required type="email" placeholder="Email address" className="px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-teal-400/50" />
-          <textarea required placeholder="Tell me about your project" rows={5} className="md:col-span-2 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-teal-400/50" />
+          <input required placeholder="Your name" className="input-teal" />
+          <input required type="email" placeholder="Email address" className="input-teal" />
+          <textarea required placeholder="Tell me about your project" rows={5} className="md:col-span-2 input-teal" />
           <div className="md:col-span-2 flex items-center gap-4">
-            <button className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-teal-500 text-black font-semibold hover:bg-teal-400 transition shadow-[0_0_35px_rgba(45,212,191,0.35)]">
+            <button className="btn-teal">
               <Send size={18} /> Send message
             </button>
             <span className="text-teal-100/80 text-sm">{status}</span>

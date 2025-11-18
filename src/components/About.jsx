@@ -1,6 +1,10 @@
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function About() {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-100px' })
+
   const items = [
     { label: 'Years Experience', value: '5+' },
     { label: 'Projects Delivered', value: '40+' },
@@ -18,15 +22,23 @@ export default function About() {
 
           <div className="mt-8 grid grid-cols-3 gap-4">
             {items.map(i => (
-              <div key={i.label} className="rounded-2xl p-5 border border-white/10 bg-white/5 text-center">
+              <motion.div
+                key={i.label}
+                ref={ref}
+                initial={{ y: 16, opacity: 0 }}
+                animate={inView ? { y: 0, opacity: 1 } : {}}
+                transition={{ duration: 0.5 }}
+                className="relative rounded-2xl p-5 border border-teal-400/20 bg-white/5 text-center overflow-hidden"
+              >
+                <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(300px_circle_at_var(--x,0px)_var(--y,0px),rgba(20,184,166,0.12),transparent_40%)]" />
                 <div className="text-2xl font-black text-teal-300">{i.value}</div>
                 <div className="text-sm text-white/70">{i.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-          <div className="relative rounded-3xl border border-white/10 p-6 bg-gradient-to-br from-black/60 to-teal-900/10">
+          <div className="relative rounded-3xl border border-teal-400/20 p-6 bg-gradient-to-br from-black/60 to-teal-900/10 shadow-[0_0_60px_rgba(45,212,191,0.08)]">
             <div className="absolute inset-0 rounded-3xl pointer-events-none bg-[radial-gradient(400px_circle_at_var(--x,0px)_var(--y,0px),rgba(20,184,166,0.12),transparent_40%)]" />
             <p className="text-teal-100/90 leading-relaxed">
               I value performance, accessibility, and craft. I love designing in the browser and bringing ideas to life with motion.

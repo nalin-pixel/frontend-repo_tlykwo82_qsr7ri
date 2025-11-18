@@ -22,8 +22,33 @@
   }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
+/* Components */
+@layer components {
+  .btn-teal {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-teal-500 text-black font-semibold transition shadow-[0_0_35px_rgba(45,212,191,0.35)];
+  }
+  .btn-teal:hover {
+    @apply bg-teal-400 shadow-[0_0_50px_rgba(45,212,191,0.45)] translate-y-[-1px];
+  }
+  .btn-outline {
+    @apply px-6 py-3 rounded-xl border border-teal-500/40 text-white hover:bg-white/10 transition;
+  }
+  .input-teal {
+    @apply px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-teal-400/50;
+  }
+}
+
+/* Micro-interactions */
 @layer utilities {
+  .tilt {
+    transform: perspective(800px) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) translateZ(0);
+    transition: transform 150ms ease;
+  }
+  .tilt:hover {
+    --rx: 2deg;
+    --ry: -2deg;
+  }
+
   .animate-in {
     animation-name: animateIn;
     animation-duration: 350ms;

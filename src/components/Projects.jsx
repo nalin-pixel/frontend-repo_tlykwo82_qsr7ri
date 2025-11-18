@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
+import { useEffect } from 'react'
 
 const projects = [
   {
@@ -23,6 +24,21 @@ const projects = [
 ]
 
 export default function Projects() {
+  useEffect(() => {
+    const handle = (e) => {
+      const cards = document.querySelectorAll('[data-radial]')
+      cards.forEach((el) => {
+        const rect = el.getBoundingClientRect()
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top
+        el.style.setProperty('--x', `${x}px`)
+        el.style.setProperty('--y', `${y}px`)
+      })
+    }
+    window.addEventListener('mousemove', handle)
+    return () => window.removeEventListener('mousemove', handle)
+  }, [])
+
   return (
     <section id="projects" className="relative py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -41,13 +57,14 @@ export default function Projects() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="group relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-5 overflow-hidden"
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="group relative rounded-2xl border border-teal-400/20 bg-gradient-to-b from-white/5 to-white/0 p-5 overflow-hidden hover:shadow-[0_0_40px_rgba(45,212,191,0.18)]"
+              data-radial
             >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition pointer-events-none bg-[radial-gradient(400px_circle_at_var(--x,0px)_var(--y,0px),rgba(20,184,166,0.15),transparent_40%)]" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition pointer-events-none bg-[radial-gradient(400px_circle_at_var(--x,0px)_var(--y,0px),rgba(20,184,166,0.18),transparent_45%)]" />
 
               <div className="flex items-center justify-between">
-                <h3 className="text-white font-semibold">{p.title}</h3>
+                <h3 className="text-white font-semibold group-hover:text-teal-200 transition">{p.title}</h3>
                 <ExternalLink className="text-teal-300 opacity-0 group-hover:opacity-100 transition" size={18} />
               </div>
               <p className="mt-2 text-sm text-teal-100/80">{p.desc}</p>
@@ -56,6 +73,11 @@ export default function Projects() {
                 {p.tags.map(t => (
                   <span key={t} className="text-xs text-teal-300/90 bg-teal-500/10 border border-teal-400/20 px-2 py-1 rounded-full">{t}</span>
                 ))}
+              </div>
+
+              {/* Button micro-interaction */}
+              <div className="mt-5">
+                <span className="inline-flex items-center gap-1 text-teal-300/90 group-hover:gap-2 transition-all">View case <ExternalLink size={14} /></span>
               </div>
             </motion.a>
           ))}
